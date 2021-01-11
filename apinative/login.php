@@ -1,15 +1,14 @@
 <?php
-	if(count($_POST)>0) {
-        // $conn = mysqli_connect("localhost","root","","blog_samples");
-        include "koneksi.php";
-		$result = mysqli_query($koneksi,"SELECT * FROM user WHERE username='" . $_POST["usser"] . "' and password = '". $_POST["pass"]."'");
-	$hasil=	"SELECT * FROM user WHERE username='" . $_POST["usser"] . "' and password = '". $_POST["pass"]."'";
-        // $count  = mysqli_num_rows($result);
-        if($hasil == ''){
-            return 1;
-        }else{
-            return 0;
-        }
-		     
-	}
+include "koneksi.php";
+$user = $_POST['x'];
+$pass = $_POST['z'];
+$sql="SELECT * FROM user WHERE username='$user' AND password='$pass'";
+$query=mysqli_query($koneksi,$sql);
+$data=mysqli_fetch_array($query);
+
+if($data>0){
+    echo 1;
+}else{
+echo 0;
+}
 ?>
