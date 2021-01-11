@@ -10,14 +10,12 @@
     <div class="boxlogin">
         <!-- <img src="sources/bekgron.jpg" alt=""> -->
         <h1>silahkan login</h1>
-        <form action="http://sihabembuns.com/uasdesktop/apinative/login.php" method="post">
             <p>Username</p>
-            <input type="text" name="user" id="usser" placeholder="masukan username / semail anda" autofocus>
+            <input type="text" name="user" id="user" placeholder="masukan username / semail anda" autofocus>
             <p>Password</p>
             <input type="password" name="pass" id="pass" placeholder="masukan password anda">
             <p></p>
             <button type="button" onclick="login()">Login</button>
-        </form>
     </div>
 </body>
 <script src="sources/jquery.min.js"></script>
@@ -70,9 +68,14 @@
       // diambil dari action di form
       var action = $(this).attr('action')
       // memulai kirim ajax
+      var u = $('#user').val()
+      var p = $('#pass').val()
       $.ajax({
         url: 'http://sihabembuns.com/uasdesktop/apinative/login.php',
-        data: data,
+        data: {
+            user: u,
+            pass: p
+        },
         method: 'POST',
        success: function(x) {
            console.log(x);
