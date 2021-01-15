@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1px">
+        <thead>
+            <th>id</th>
+            <th>nama</th>
+            <th>jumlah</th>
+            <th>bulan</th>
+            <th>aksi</th>
+
+        </thead>
+        <tbody id="isi"></tbody>
+    </table>
+    <script src="sources/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            tampildata()
+        })
+        function tampildata(){
+            $('#isi').load('http://sihabembuns.com/uasdesktop/apinative/ambildata.php');
+        }
+    </script>
+</body>
+</html>

@@ -8,6 +8,7 @@ $data=mysqli_fetch_array($query);
 
 if($data>0){
     echo 1;
+    // json_encode($query);
 }else{
 echo 0;
 }

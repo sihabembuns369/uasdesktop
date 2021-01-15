@@ -1,1 +1,97 @@
-<h1>sukses</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="sources/fontawesome/css/all.css">
+    <link rel="stylesheet" href="sources/sty.css">
+</head>
+<body>
+    <input type="checkbox" id="check">
+    <header>
+        <label for="check">
+            <i class="fas fa-bars" id="sidebar-button"></i>
+        </label>
+        <div class="left_area">
+            <h3>Bank.jo <span>Sambong</span></h3>
+        </div>
+        <div class="right_area">
+            <input type="checkbox" id="lamp" class="checkbox">
+            <label for="lamp" class="label">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+                <div class="ball"></div>
+            </label>
+            <button onclick="logout()" class="logout_btn">logout</button>
+        </div>
+    </header>
+
+
+    <div class="sidebar">
+        <center>
+            <img src="sources/bekgron.jpg" alt=""  class="profile">
+            <h4>name</h4>
+        </center>
+        <a href="#" class=""><i class="fas fa-desktop"></i><span>home</span></a>
+        <a href="#" class=""><i class="fas fa-desktop"></i><span></span></a>
+        <a href="#" class=""><i class="fas fa-desktop"></i><span></span></a>
+        <a href="#" class=""><i class="fas fa-desktop"></i><span></span></a>
+        <a href="#" class=""><i class="fas fa-desktop"></i><span></span></a>
+    </div>
+    
+    <div class="content">
+        <!-- <fieldset>
+            hako
+        </fieldset> -->
+        <table class="tab">
+            <tr id="header">
+                <th>id</th>
+                <th>nama</th>
+                <th>jumlah</th>
+                <th>bulan</th>
+                <th>aksi</th>
+            <tr>
+                <tbody id="tbldata">
+                </tbody>
+            
+        </table>
+    <footer>supported by doa ibu</footer>
+       
+    </div>
+    <script src="sources/loginku.js">
+        // ceklogin();
+    </script>
+     <script src="sources/jquery.min.js"></script>
+    <script>
+        const checkbox =
+        document.getElementById('lamp');
+        checkbox.addEventListener('change', () =>{
+            document.body.classList.toggle('dark');
+            // document.table.classList.toggle('dark');
+        });
+        $(document).ready(function(){
+            tampildata()
+        })
+        // $.ajax({
+        //     type:"GET",
+        //     data:"",
+        //     url:'http://sihabembuns.com/uasdesktop/apinative/ambildata.php',
+        //     success:function(result){
+        //         console.log(result);
+        //         var objResult=JSON.parse(result);
+        //         $.each(objResult, function(key,val){
+        //             var barisbaru=$("<tr>");
+        //                 barisbaru.html("<td>"+val.idtabungan+"</td>")
+        //                 var dataHandler=$("#tbldata");
+        //                 dataHandler.append(barisbaru);
+        //         })
+        //     }
+        // })
+// tampildata();
+        function tampildata(){
+            $('#tbldata').load('http://sihabembuns.com/uasdesktop/apinative/ambildata.php');
+        }
+    </script>
+</body>
+</html>

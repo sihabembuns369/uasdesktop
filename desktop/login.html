@@ -1,89 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="sources/style.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="sources/style.css">
+  <title>Document</title>
 </head>
+
 <body>
-    <div class="boxlogin">
-        <!-- <img src="sources/bekgron.jpg" alt=""> -->
-        <h1>silahkan login</h1>
-        <form action="http://sihabembuns.com/uasdesktop/apinative/login.php" method="post">
-            <p>Username</p>
-            <input type="text" name="user" id="usser" placeholder="masukan username / semail anda" autofocus>
-            <p>Password</p>
-            <input type="password" name="pass" id="pass" placeholder="masukan password anda">
-            <p></p>
-            <button type="button" onclick="login()">Login</button>
-        </form>
-    </div>
+  <div class="boxlogin">
+    <h3 id="pesan"></h3>
+    <!-- <img src="sources/bekgron.jpg" alt=""> -->
+    <h1>silahkan login</h1>
+    <form action="http://sihabembuns.com/uasdesktop/apinative/login.php" method="post">
+      <p>Username</p>
+      <input type="text" name="user" id="usser" placeholder="masukan username / semail anda" autofocus>
+      <p>Password</p>
+      <input type="password" name="pass" id="pass" placeholder="masukan password anda">
+      <p></p>
+      <button type="button" onclick="login()">Login</button>
+    </form>
+  </div>
 </body>
 <script src="sources/jquery.min.js"></script>
+<script src="sources/loginku.js"></script>
 <script>
-    function login(){
+  function login() {
     var user = $("#usser").val();
     var pass = $("#pass").val();
     // alert("halo")
-    
+
     $.ajax({
-            url: 'http://sihabembuns.com/uasdesktop/apinative/login.php',
-            method:'POST',
-            data:{x:user ,z:pass},
-            // data:"usser="+usser+"&pass="+pass,
-            cache:'false',
-            success:function(x){
-                console.log(x);
-                var dt = x;
-                if(dt==1){
-                    console.log(dt);
-                    // localStorage.setItem('sihab',user)
-                    // localStorage.setItem('sihab',dt[1])
-                    // window.location.href ='index.html';
-                    alert("sukses")
-                }else{
-                    alert("gagal")
-                //     swal({
-                //     title: 'login gagal',
-                //     text: dt[1],
-                //     type: 'error',
-                //     confirmButtonClass: 'btn btn-danger'
-                // })
-                }
-            }
-        })
-
+      url: 'http://sihabembuns.com/uasdesktop/apinative/login.php',
+      method: 'POST',
+      data: { x: user, z: pass },
+      cache: 'false',
+      success: function (x) {
+        console.log(x);
+        var datalogin = x;
+        if (datalogin == 1) {
+          console.log(datalogin);
+          sessionStorage.setItem('sihab', user);
+          // localStorage.setItem('sihab',dt[1])
+          window.location.href = 'index.html';
+          alert("sukses")
+        } else {
+          alert("gagal")
+function l(query){
+  
+}
+         
+          // print (datalogin) untuk mencetak hasil
+          //     swal({
+          //     title: 'login gagal',
+          //     text: dt[1],
+          //     type: 'error',
+          //     confirmButtonClass: 'btn btn-danger'
+          // })
         }
-// </script>
-
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-  function login(){
-    // jika terjadi event submit pada form
-    
-      // mencegah agar halaman tidak pindah halaman / refresh
-    
-      // ambil data
-      var data = $(this).serialize()
-      // ambil method dari method di form
-      var method = $(this).attr('method')
-      // ke mana data akan dikirim
-      // diambil dari action di form
-      var action = $(this).attr('action')
-      // memulai kirim ajax
-      $.ajax({
-        url: 'http://sihabembuns.com/uasdesktop/apinative/login.php',
-        data: data,
-        method: 'POST',
-       success: function(x) {
-           console.log(x);
-           alert("sukses")
-          // lakukan sesuatu sebelum data dikirim
-          // misalkan memulai loading
-        },
-      
+      }
     })
+
   }
-</script> -->
-</html> 
+//</script>
+
+</html>
