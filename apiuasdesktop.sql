@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 11, 2021 at 11:41 PM
+-- Generation Time: Jan 17, 2021 at 07:59 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `apiuasdesktop`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `datatabungan`
+--
+
+CREATE TABLE `datatabungan` (
+  `id_tabungan` int(11) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `jumlah` bigint(200) NOT NULL,
+  `bulan` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `datatabungan`
+--
+
+INSERT INTO `datatabungan` (`id_tabungan`, `nama`, `jumlah`, `bulan`) VALUES
+(49, 'wdfjh', 123, 'qw'),
+(50, 'wdfjh', 123, 'qw'),
+(51, 'wdfjh', 123, 'qwdf');
 
 -- --------------------------------------------------------
 
@@ -45,6 +67,12 @@ INSERT INTO `user` (`id_user`, `username`, `password`) VALUES
 --
 
 --
+-- Indexes for table `datatabungan`
+--
+ALTER TABLE `datatabungan`
+  ADD PRIMARY KEY (`id_tabungan`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -53,6 +81,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `datatabungan`
+--
+ALTER TABLE `datatabungan`
+  MODIFY `id_tabungan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `user`

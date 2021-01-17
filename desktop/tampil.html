@@ -80,29 +80,32 @@
                 method:'POST',
                 dataType:'JSON',
                 success:function(data){
-                    alert(data)
+                    console.log(data)
+            kode="'"+ id_tabungan +"'"
             $('#nama').val(data.nama)
             $('#jumlah').val(data.jumlah)
             $('#bulan').val(data.bulan)
-            // $('#tombol')
-            $('#tombol').html(' <button type="button" onclick="editdata('+id_tabungan+')">edit</button>')
+            $('#tombol').html(' <button type="button" onclick="editdata('+kode+')">edit</button>')
                 }
             })
         }
-        function editdata(id_tabungan){
+        function editdata(kode){
+            console.log(kode)
             var nama = $('#nama').val()
             var jumlah = $('#jumlah').val()
             var bulan = $('#bulan').val()
+
             $.ajax({
                 url:'http://sihabembuns.com/uasdesktop/apinative/editdata.php',
                 method:'POST',
-                data:{'id':id_tabungan,'nama':nama,'jumlah':jumlah,'bulan':bulan},
-                // dataType:'JSON',
+                dataType:'JSON',
+                data:{'id':kode ,'nama':nama,'jumlah':jumlah,'bulan':bulan },
                 success:function(data){
-                    alert(data)
+                    alert(data);
                 }
             })
         }
+        
     </script>
 </body>
 </html>
