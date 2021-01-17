@@ -15,8 +15,8 @@ foreach ($hasil as $isi):
     <td><?= $isi['jumlah']?></td>
     <td><?= $isi['bulan']?></td>
     <td>
-    <button type="button" class="" onclick="edit()">edit</button>
-    <button type="button" class="" onclick="hapus()">hapus</button>
+    <button type="button" class="" onclick="edit('<?= $isi['id_tabungan']?>')" style="background-color:green; width:29%; ">edit</button>
+    <button type="button" class="" onclick="hapus('<?= $isi['id_tabungan']?>')"  style="background-color:red; width:29%;">hapus</button>
     </td>
 
 </tr>

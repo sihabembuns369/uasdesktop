@@ -6,7 +6,20 @@
     <title>Document</title>
 </head>
 <body>
-    <table border="1px">
+    <table>
+        <tr>
+            <th>nama<input type="text" id="nama"></th> 
+        </tr>
+        <tr>
+            <th>jumlah<input type="text" id="jumlah"></th>
+        </tr>
+        <tr>
+            <th>bulan<input type="text" id="bulan"></th>
+        </tr>
+    </table>
+<div id="tombol"></div>
+    <button onclick="tambahdata()">tambahdata</button><br></br>
+    <table border="1px" style="width: 50%;">
         <thead>
             <th>id</th>
             <th>nama</th>
@@ -24,6 +37,71 @@
         })
         function tampildata(){
             $('#isi').load('http://sihabembuns.com/uasdesktop/apinative/ambildata.php');
+            kosongkandata()
+        }
+        function tambahdata(){
+            var nama = $('#nama').val()
+            var jumlah = $('#jumlah').val()
+            var bulan = $('#bulan').val()
+
+            $.ajax({
+                url:'http://sihabembuns.com/uasdesktop/apinative/input.php',
+                method:'POST',
+                dataType:'JSON',
+                data:{'nama':nama,'jumlah':jumlah,'bulan':bulan },
+                success:function(data){
+                    alert(data);
+                }
+            })
+        }
+        function kosongkandata(){
+            $('#nama').val()
+            $('#jumlah').val()
+            $('#bulan').val()
+
+        }
+
+        function hapus(id_tabungan){
+            $.ajax({
+                url:'http://sihabembuns.com/uasdesktop/apinative/hapusdata.php',
+                data:{'id':id_tabungan},
+                method:'POST',
+                success:function(data){
+                    console.log(data)
+                }
+            })
+        }
+        
+
+        function edit(id_tabungan){
+            $.ajax({
+                url:'http://sihabembuns.com/uasdesktop/apinative/tampiledit.php',
+                data:{'id':id_tabungan},
+                method:'POST',
+                dataType:'JSON',
+                success:function(data){
+                    alert(data)
+            $('#nama').val(data.nama)
+            $('#jumlah').val(data.jumlah)
+            $('#bulan').val(data.bulan)
+            // $('#tombol')
+            $('#tombol').html(' <button type="button" onclick="editdata('+id_tabungan+')">edit</button>')
+                }
+            })
+        }
+        function editdata(id_tabungan){
+            var nama = $('#nama').val()
+            var jumlah = $('#jumlah').val()
+            var bulan = $('#bulan').val()
+            $.ajax({
+                url:'http://sihabembuns.com/uasdesktop/apinative/editdata.php',
+                method:'POST',
+                data:{'id':id_tabungan,'nama':nama,'jumlah':jumlah,'bulan':bulan},
+                // dataType:'JSON',
+                success:function(data){
+                    alert(data)
+                }
+            })
         }
     </script>
 </body>
